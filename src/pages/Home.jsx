@@ -1,6 +1,7 @@
 import SectioBar from '../components/SectioBar'
 import ImdbTopMovies from "../components/ImdbTopMovies";
 import ImdbMovies from "../components/ImdbMovies";
+import Footer from "../components/Footer";
 function Home() {
   return (
     <>
@@ -8,6 +9,7 @@ function Home() {
       <ImdbTopMovies />
       
       <ImdbMovies />
+      <Footer />
     </>
   )
 }

@@ -6,7 +6,7 @@ function Contact() {
       </h1>
 
       <p className="mt-3
-       text-gray-600">This is a  conta</p>
+       text-gray-600">This is a simple contact page.</p>
 
     </main>
   )
