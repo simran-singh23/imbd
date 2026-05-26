@@ -19,7 +19,8 @@ const Sign = () => {
           </div>
 
        
-          <button className="w-full bg-yellow-400 hover:bg-yellow-500 transition-all duration-300 py-5 rounded-full text-2xl font-semibold text-black">
+          <button className="w-full bg-yellow-400 hover:bg-yellow-500 
+          transition-all duration-300 py-5 rounded-full text-2xl font-semibold text-black">
             Create an account
           </button>
 
@@ -93,10 +94,11 @@ const Sign = () => {
               </h3>
 
               <p className="text-gray-500 text-2xl mt-2">
-                Add data that helps millions of fans.
+                Contribute cast, trivia, release dates, 
+                and other details to help millions of fans discover and enjoy entertainment.
               </p>
             </div>
-
+     
             <div>
               <h3 className="text-3xl font-bold text-black">
                 Preferred services

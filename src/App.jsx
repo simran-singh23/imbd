@@ -15,6 +15,7 @@ import PressRoom from "./pages/PressRoom";
 import PrivacyPolicy from "./pages/PrivacyPolicy";
 import Series from "./pages/Series";
 import SiteIndex from "./pages/SiteIndex";
+import Watchlist from "./pages/Watchlist";
 
 import ImdbMovies from "./components/ImdbMovies";
 import Sign from "./components/Sign";
@@ -44,6 +45,7 @@ function App() {
      
         <Route path="/movies" element={<ImdbMovies />} />
         <Route path="/series" element={<Series />} />
+        <Route path="/watchlist" element={<Watchlist />} />
 
     
         <Route path="/sign" element={<Sign />} />

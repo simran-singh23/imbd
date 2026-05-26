@@ -1,132 +1,78 @@
-export default function Advertising() {
-  const movies = [
-    {
-      title: "Dark Knight",
-      year: "2008",
-      rating: "9.0",
-      image:
-        "https://images.unsplash.com/photo-1489599849927-2ee91cede3ba?q=80&w=1200&auto=format&fit=crop",
-    },
-    {
-      title: "Avengers Endgame",
-      year: "2019",
-      rating: "8.4",
-      image:
-        "https://images.unsplash.com/photo-1517604931442-7e0c8ed2963c?q=80&w=1200&auto=format&fit=crop",
-    },
-    {
-      title: "Joker",
-      year: "2019",
-      rating: "8.5",
-      image:
-        "https://images.unsplash.com/photo-1513106580091-1d82408b8cd6?q=80&w=1200&auto=format&fit=crop",
-    },
-    {
-      title: "Interstellar",
-      year: "2014",
-      rating: "8.7",
-      image:
-        "https://images.unsplash.com/photo-1440404653325-ab127d49abc1?q=80&w=1200&auto=format&fit=crop",
-    },
-  ];
+import { useState } from "react"
+
+const adOptions = ["Movie campaign", "Series promotion", "Brand sponsorship"]
+
+function Advertising() {
+  const [selected, setSelected] = useState(adOptions[0])
+  const [sent, setSent] = useState(false)
+
+  const handleSubmit = (event) => {
+    event.preventDefault()
+    setSent(true)
+    event.currentTarget.reset()
+  }
 
   return (
-    <div className="min-h-screen bg-black text-white">
+    <main className="min-h-screen bg-gray-100 px-6 py-12">
 
+      <section className="mx-auto grid max-w-6xl gap-8 lg:grid-cols-[1fr_420px]">
 
-      
-      <section className="relative h-[80vh] flex items-center justify-center overflow-hidden">
-        <img
-          src="https://images.unsplash.com/photo-1485846234645-a62644f84728?q=80&w=1600&auto=format&fit=crop"
-          alt="banner"
-          className="absolute w-full h-full object-cover opacity-40"
-        />
+        <div className="rounded-2xl bg-black p-8 text-white">
+  <p className="font-bold uppercase tracking-[0.35em] text-yellow-400">
 
-        <div className="relative z-10 text-center px-5 max-w-3xl">
-          <h1 className="text-5xl md:text-7xl font-extrabold leading-tight">
-            Unlimited Movies,
-            <span className="text-yellow-400"> Reviews </span>
-            & Trailers
-          </h1>
-
-          <p className="text-zinc-300 mt-6 text-lg leading-8">
-            Discover trending movies, watch trailers, and explore ratings
-            like IMDb.
+            Advertising
+          </p>
+          <h1 className="mt-4 text-5xl font-black">Advertise with IMDb</h1>
+ <p className="mt-4 max-w-2xl text-lg text-zinc-300">
+            Promote movies, shows, trailers, and brands to entertainment fans.
           </p>
 
-          <div className="flex justify-center gap-4 mt-8 flex-wrap">
-            <button className="bg-yellow-400 text-black font-bold px-7 py-3 rounded-2xl hover:scale-105 transition duration-300">
-              Explore Now
-            </button>
+          <div className="mt-8 grid gap-4 sm:grid-cols-3">
+            {adOptions.map((option) => (
+              <button key={option} onClick={() => setSelected(option)}
+                
+              className={`rounded-lg p-4 text-left font-bold ${
+                  selected === option
 
-            <button className="border border-zinc-500 px-7 py-3 rounded-2xl hover:bg-white hover:text-black transition duration-300">
-              Watch Trailer
-            </button>
+                    ? "bg-yellow-400 text-black"
+                    : "bg-zinc-900 text-white hover:bg-zinc-800"
+                }`}
+              >
+                {option}
+              </button>
+            ))}
           </div>
         </div>
-      </section>
 
+        <form className="rounded-2xl bg-white p-6 shadow" onSubmit={handleSubmit}>
+          <h2 className="text-3xl font-bold text-gray-900">Request details</h2>
+          <p className="mt-2 text-gray-600">Selected: {selected}</p>
 
-      <section className="px-8 py-16">
-        <div className="flex items-center justify-between mb-10">
-          <h2 className="text-3xl font-bold">
-            Trending Movies
-          </h2>
+          {sent && (
+            <p className="mt-4 rounded-lg bg-green-100 p-3 font-semibold text-green-700">
+              Request sent successfully.
+            </p>
+          )}
 
-          <button className="text-yellow-400 hover:underline">
-            View All
+          <input required
+            placeholder="Your name"
+            className="mt-5 w-full rounded border border-gray-300 px-4 py-3 outline-none focus:border-yellow-500"
+          />
+          <input required
+            type="email" placeholder="Email address"
+            className="mt-4 w-full rounded border border-gray-300 px-4 py-3 outline-none focus:border-yellow-500"
+          />
+          <textarea required rows="4"
+            placeholder="Tell us about your campaign"
+            className="mt-4 w-full resize-none rounded border border-gray-300 px-4 py-3 outline-none focus:border-yellow-500"
+          />
+          <button className="mt-5 w-full rounded bg-yellow-400 px-5 py-3 font-bold text-black hover:bg-yellow-300">
+            Submit request
           </button>
-        </div>
-
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
-          {movies.map((movie, index) => (
-            <div
-              key={index}
-              className="bg-zinc-900 rounded-3xl overflow-hidden shadow-lg hover:-translate-y-2 transition duration-300 group"
-            >
-              <div className="overflow-hidden h-80">
-                <img
-                  src={movie.image}
-                  alt={movie.title}
-                  className="w-full h-full object-cover group-hover:scale-110 transition duration-500"
-                />
-              </div>
-
-              <div className="p-5">
-                <div className="flex items-center justify-between mb-3">
-                  <h3 className="text-xl font-bold">
-                    {movie.title}
-                  </h3>
-
-                  <span className="bg-yellow-400 text-black text-sm font-bold px-3 py-1 rounded-full">
-                    ⭐ {movie.rating}
-                  </span>
-                </div>
-
-                <p className="text-zinc-400 text-sm mb-5">
-                  Release Year: {movie.year}
-                </p>
-
-                <button className="w-full bg-yellow-400 text-black font-semibold py-3 rounded-xl hover:bg-yellow-300 transition duration-300">
-                  Watch Now
-                </button>
-              </div>
-            </div>
-          ))}
-        </div>
+        </form>
       </section>
-
-
-      <footer className="border-t border-zinc-800 py-8 text-center text-zinc-400">
-        <h2 className="text-2xl font-bold text-yellow-400 mb-2">
-          IMDb 
-        </h2>
-
-        <p>
-          Designed with 
-        </p>
-      </footer>
-    </div>
-  );
+    </main>
+  )
 }
 
+export default Advertising
